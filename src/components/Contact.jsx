@@ -62,9 +62,9 @@ export default function Contact() {
 
             {/* Contact details */}
             {[
-              { icon: '◎', label: isUr ? 'فون' : 'Phone', value: '+92 300 1234 567' },
-              { icon: '◈', label: isUr ? 'ای میل' : 'Email', value: 'orders@eliterice.pk' },
-              { icon: '◇', label: isUr ? 'دفتر' : 'Office', value: isUr ? 'شیخوپورہ، پنجاب، پاکستان' : 'Sheikhupura, Punjab, Pakistan' },
+              { icon: '◎', label: isUr ? 'فون' : 'Phone', value: '03227017880' },
+              { icon: '◈', label: isUr ? 'ای میل' : 'Email', value: 'Anasjaved@gmail.com' },
+              { icon: '◇', label: isUr ? 'دفتر' : 'Office', value: isUr ? 'دیپالپور، پنجاب، پاکستان' : 'Depalpur, Punjab, Pakistan' },
             ].map((c, i) => (
               <motion.div key={i}
                 initial={reduce ? { opacity: 1 } : { opacity: 0, y: 12 }}
