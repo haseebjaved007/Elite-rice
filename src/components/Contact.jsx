@@ -1,6 +1,6 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { motion, useInView, useReducedMotion } from 'framer-motion'
-import { useLang } from '../App'
+import { useLang, useOrder } from '../App'
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', business: '', city: '', phone: '', variety: '', volume: '', message: '' })
@@ -9,7 +9,12 @@ export default function Contact() {
   const inView = useInView(ref, { once: true, margin: '-80px' })
   const reduce = useReducedMotion()
   const { lang } = useLang()
+  const { order } = useOrder()
   const isUr = lang === 'ur'
+
+  useEffect(() => {
+    setForm((f) => ({ ...f, variety: order.variety || f.variety, volume: order.volume || f.volume }))
+  }, [order])
 
   const handleSubmit = (e) => {
     e.preventDefault()

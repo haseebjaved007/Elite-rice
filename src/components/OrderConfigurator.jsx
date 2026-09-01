@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react'
 import { motion, AnimatePresence, useInView, useReducedMotion } from 'framer-motion'
-import { useLang } from '../App'
+import { useLang, useOrder } from '../App'
 
 const steps = [
   {
@@ -69,6 +69,7 @@ export default function OrderConfigurator() {
   const titleInView = useInView(titleRef, { once: true, margin: '-80px' })
   const reduce = useReducedMotion()
   const { lang } = useLang()
+  const { setOrder } = useOrder()
   const isUr = lang === 'ur'
 
   const step = steps[currentStep]
@@ -78,6 +79,13 @@ export default function OrderConfigurator() {
     else setDone(true)
   }
   const handleBack = () => { setDirection(-1); setCurrentStep((s) => s - 1) }
+
+  const handleContactRedirect = () => {
+    let vol = selections[1] || ''
+    if (vol.includes('(')) vol = vol.split(' (')[0]
+    setOrder({ variety: selections[0] || '', volume: vol })
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+  }
 
   return (
     <section id="order" style={{ backgroundColor: '#1c3a13', paddingTop: '96px', paddingBottom: '96px' }}>
@@ -173,11 +181,11 @@ export default function OrderConfigurator() {
                     <p className="t-caption" style={{ color: 'rgba(252,252,247,0.5)', marginBottom: '32px' }}>
                       {isUr ? 'ہم 24 گھنٹے میں قیمت کے ساتھ رابطہ کریں گے۔' : 'Our team will reach out with a detailed quote within 24 hours.'}
                     </p>
-                    <motion.a href="#contact" className="btn-primary"
-                      style={{ backgroundColor: '#e8c547', color: '#1c3a13', display: 'inline-flex' }}
+                    <motion.button onClick={handleContactRedirect} className="btn-primary"
+                      style={{ backgroundColor: '#e8c547', color: '#1c3a13', display: 'inline-flex', border: 'none', cursor: 'pointer' }}
                       whileHover={reduce ? {} : { scale: 1.02 }} whileTap={reduce ? {} : { scale: 0.97 }}>
                       {isUr ? 'تفصیلات بھیجیں →' : 'Send My Details →'}
-                    </motion.a>
+                    </motion.button>
                   </motion.div>
                 ) : (
                   <motion.div key={currentStep}
