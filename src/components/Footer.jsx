@@ -1,16 +1,55 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { useLang } from '../App'
 
 const cols = {
   en: {
-    varieties: { title: 'Varieties', links: ['SK-01™ Super Kernel', '1121-W™ White Sella', 'ST-02™ Steam Basmati', 'IRRI-9™ Long Grain', 'SB-03™ Sella', 'KN-04™ Kainat'] },
-    company: { title: 'Company', links: ['Our Story', 'Quality Promise', 'Farm Partners', 'Careers', 'Press'] },
-    support: { title: 'Support', links: ['How to Order', 'Delivery Info', 'Custom Packaging', 'FAQs', 'Contact Us'] },
+    varieties: { title: 'Varieties', links: [
+      { name: 'SK-01™ Super Kernel', href: '/#varieties' },
+      { name: '1121-W™ White Sella', href: '/#varieties' },
+      { name: 'ST-02™ Steam Basmati', href: '/#varieties' },
+      { name: 'IRRI-9™ Long Grain', href: '/#varieties' },
+      { name: 'SB-03™ Sella', href: '/#varieties' },
+      { name: 'KN-04™ Kainat', href: '/#varieties' }
+    ] },
+    company: { title: 'Company', links: [
+      { name: 'Our Story', href: '/about' },
+      { name: 'Quality Promise', href: '/about' },
+      { name: 'Farm Partners', href: '/about' },
+      { name: 'Careers', href: '/#contact' },
+      { name: 'Press', href: '/#contact' }
+    ] },
+    support: { title: 'Support', links: [
+      { name: 'How to Order', href: '/faq' },
+      { name: 'Delivery Info', href: '/delivery' },
+      { name: 'Custom Packaging', href: '/faq' },
+      { name: 'FAQs', href: '/faq' },
+      { name: 'Contact Us', href: '/#contact' }
+    ] },
   },
   ur: {
-    varieties: { title: 'اقسام', links: ['SK-01™ سپر کرنل', '1121-W™ وائٹ سیلہ', 'ST-02™ سٹیم باسمتی', 'IRRI-9™', 'SB-03™ سیلہ', 'KN-04™ کائنات'] },
-    company: { title: 'کمپنی', links: ['ہماری کہانی', 'معیار کا وعدہ', 'کسان شراکت دار', 'ملازمت', 'پریس'] },
-    support: { title: 'مدد', links: ['آرڈر کیسے کریں', 'ڈیلیوری معلومات', 'کسٹم پیکیجنگ', 'سوالات', 'رابطہ'] },
+    varieties: { title: 'اقسام', links: [
+      { name: 'SK-01™ سپر کرنل', href: '/#varieties' },
+      { name: '1121-W™ وائٹ سیلہ', href: '/#varieties' },
+      { name: 'ST-02™ سٹیم باسمتی', href: '/#varieties' },
+      { name: 'IRRI-9™', href: '/#varieties' },
+      { name: 'SB-03™ سیلہ', href: '/#varieties' },
+      { name: 'KN-04™ کائنات', href: '/#varieties' }
+    ] },
+    company: { title: 'کمپنی', links: [
+      { name: 'ہماری کہانی', href: '/about' },
+      { name: 'معیار کا وعدہ', href: '/about' },
+      { name: 'کسان شراکت دار', href: '/about' },
+      { name: 'ملازمت', href: '/#contact' },
+      { name: 'پریس', href: '/#contact' }
+    ] },
+    support: { title: 'مدد', links: [
+      { name: 'آرڈر کیسے کریں', href: '/faq' },
+      { name: 'ڈیلیوری معلومات', href: '/delivery' },
+      { name: 'کسٹم پیکیجنگ', href: '/faq' },
+      { name: 'سوالات', href: '/faq' },
+      { name: 'رابطہ', href: '/#contact' }
+    ] },
   },
 }
 
@@ -58,12 +97,12 @@ export default function Footer() {
               </p>
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '10px' }}>
                 {col.links.map((link) => (
-                  <li key={link}>
-                    <a href="#" style={{ fontFamily: isUr ? 'Noto Nastaliq Urdu, serif' : 'Inter, sans-serif', fontSize: '14px', fontWeight: 350, color: 'rgba(252,252,247,0.5)', textDecoration: 'none', lineHeight: isUr ? 2 : 1.4, transition: 'color 0.15s ease' }}
+                  <li key={link.name}>
+                    <Link to={link.href} style={{ fontFamily: isUr ? 'Noto Nastaliq Urdu, serif' : 'Inter, sans-serif', fontSize: '14px', fontWeight: 350, color: 'rgba(252,252,247,0.5)', textDecoration: 'none', lineHeight: isUr ? 2 : 1.4, transition: 'color 0.15s ease' }}
                       onMouseEnter={(e) => (e.currentTarget.style.color = '#fcfcf7')}
                       onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(252,252,247,0.5)')}>
-                      {link}
-                    </a>
+                      {link.name}
+                    </Link>
                   </li>
                 ))}
               </ul>

@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import { useLang } from '../App'
 
 const navLinks = [
-  { en: 'Varieties', ur: 'اقسام', href: '#varieties' },
-  { en: 'Quality', ur: 'معیار', href: '#quality' },
-  { en: 'Order', ur: 'آرڈر', href: '#order' },
-  { en: 'Story', ur: 'کہانی', href: '#story' },
+  { en: 'Varieties', ur: 'اقسام', href: '/#varieties' },
+  { en: 'Quality', ur: 'معیار', href: '/#quality' },
+  { en: 'Order', ur: 'آرڈر', href: '/#order' },
+  { en: 'Story', ur: 'کہانی', href: '/#story' },
 ]
 
 export default function Navbar() {
@@ -40,25 +41,25 @@ export default function Navbar() {
         style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '72px' }}
       >
         {/* Wordmark */}
-        <a href="#" style={{ display: 'flex', alignItems: 'center', gap: '6px', textDecoration: 'none' }}>
+        <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '6px', textDecoration: 'none' }}>
           <span className="nav-wordmark" style={{ fontFamily: 'Inter, sans-serif', fontSize: '18px', fontWeight: 400, color: '#1c3a13', letterSpacing: '-0.2px' }}>
             Elite Rice
           </span>
           <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#e8c547', display: 'inline-block', marginBottom: '1px' }} />
-        </a>
+        </Link>
 
         {/* Desktop nav */}
         <nav style={{ display: 'flex', alignItems: 'center', gap: '32px' }} className="desk-nav">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.en}
-              href={link.href}
+              to={link.href}
               style={{ fontFamily: 'Inter, sans-serif', fontSize: '15px', fontWeight: 400, color: '#1c3a13', textDecoration: 'none', opacity: 0.65, transition: 'opacity 0.15s ease' }}
               onMouseEnter={(e) => (e.currentTarget.style.opacity = '1')}
               onMouseLeave={(e) => (e.currentTarget.style.opacity = '0.65')}
             >
               {lang === 'ur' ? link.ur : link.en}
-            </a>
+            </Link>
           ))}
         </nav>
 
@@ -85,15 +86,16 @@ export default function Navbar() {
           >
             {lang === 'en' ? 'اردو' : 'English'}
           </motion.button>
-          <motion.a
-            href="#order"
+          <motion.div
+            as={Link}
+            to="/#order"
             className="btn-primary"
-            style={{ padding: '10px 20px', fontSize: '14px', whiteSpace: 'nowrap' }}
+            style={{ padding: '10px 20px', fontSize: '14px', whiteSpace: 'nowrap', textDecoration: 'none', display: 'inline-flex' }}
             whileHover={reduce ? {} : { scale: 1.02 }}
             whileTap={reduce ? {} : { scale: 0.97 }}
           >
             {lang === 'ur' ? 'آرڈر' : 'Order Now'}
-          </motion.a>
+          </motion.div>
         </div>
 
         {/* Mobile hamburger */}
@@ -125,17 +127,17 @@ export default function Navbar() {
           >
             <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
               {navLinks.map((link) => (
-                <a key={link.en} href={link.href} onClick={() => setMobileOpen(false)}
+                <Link key={link.en} to={link.href} onClick={() => setMobileOpen(false)}
                   style={{ fontFamily: 'Inter, sans-serif', fontSize: '18px', fontWeight: 400, color: '#1c3a13', textDecoration: 'none' }}>
                   {lang === 'ur' ? link.ur : link.en}
-                </a>
+                </Link>
               ))}
               <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
                 <button onClick={() => setLang(lang === 'en' ? 'ur' : 'en')}
                   style={{ background: 'transparent', border: '1.5px solid #1c3a13', borderRadius: '1000px', padding: '8px 16px', fontFamily: 'Inter, sans-serif', fontSize: '14px', color: '#1c3a13', cursor: 'pointer' }}>
                   {lang === 'en' ? 'اردو' : 'English'}
                 </button>
-                <a href="#order" className="btn-primary" style={{ padding: '10px 20px', fontSize: '14px' }}>{lang === 'ur' ? 'ابھی آرڈر کریں' : 'Order Now'}</a>
+                <Link to="/#order" className="btn-primary" style={{ padding: '10px 20px', fontSize: '14px', textDecoration: 'none' }} onClick={() => setMobileOpen(false)}>{lang === 'ur' ? 'ابھی آرڈر کریں' : 'Order Now'}</Link>
               </div>
             </div>
           </motion.div>
