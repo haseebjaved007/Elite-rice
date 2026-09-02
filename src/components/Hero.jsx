@@ -64,18 +64,23 @@ function MagneticCTA({ href, label, className }) {
   const reduce = useReducedMotion()
 
   const onMove = useCallback((e) => {
-    if (reduce) return
+    // Disable magnetic effect on touch devices or small screens
+    if (reduce || (typeof window !== 'undefined' && window.innerWidth < 1024)) return
     const r = ref.current?.getBoundingClientRect()
     if (!r) return
     x.set((e.clientX - r.left - r.width / 2) * 0.32)
     y.set((e.clientY - r.top - r.height / 2) * 0.32)
   }, [reduce, x, y])
-  const onLeave = useCallback(() => { x.set(0); y.set(0) }, [x, y])
+  
+  const onLeave = useCallback(() => { 
+    x.set(0); 
+    y.set(0); 
+  }, [x, y])
 
   return (
     <motion.a ref={ref} href={href} className={className}
       onMouseMove={onMove} onMouseLeave={onLeave}
-      style={{ x: sx, y: sy }}>
+      style={{ x: sx, y: sy, display: 'inline-block' }}>
       {label}
     </motion.a>
   )
