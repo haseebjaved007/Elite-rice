@@ -294,7 +294,7 @@ export default function Hero() {
         <div className="hero-grid" style={{ display: 'grid', gridTemplateColumns: '55fr 45fr', gap: '40px', alignItems: 'center', width: '100%' }}>
 
           {/* LEFT / TEXT COLUMN */}
-          <motion.div style={{ y: titleY }}>
+          <motion.div className="hero-text-col" style={{ y: titleY }}>
 
             {/* Badges */}
             <motion.div
@@ -463,6 +463,7 @@ export default function Hero() {
         @media (max-width: 900px) {
           .hero-grid { grid-template-columns: 1fr !important; }
           .hero-field { display: none !important; }
+          .hero-text-col { transform: none !important; }
           #hero .page-wrap { padding-top: 24px !important; padding-bottom: 24px !important; }
         }
         @media (max-width: 600px) {
