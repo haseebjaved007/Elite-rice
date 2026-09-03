@@ -1,15 +1,20 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import sackImage from '../assets/product-sack-base.jpg'
+import sack0 from '../assets/sack_0.jpg'
+import sack1 from '../assets/sack_1.jpg'
+import sack2 from '../assets/sack_2.jpg'
+import sack3 from '../assets/sack_3.jpg'
+import sack4 from '../assets/sack_4.jpg'
+import sack5 from '../assets/sack_5.jpg'
 
 const varieties = [
-  { name: 'Super Kernel Basmati', sub: 'Extra Long Grain | Premium Quality', color: 50, filter: 'hue-rotate(-30deg) saturate(1.2)' }, // Gold/Greenish
-  { name: '1121 White Sella', sub: 'Extra Long Grain | Sella', color: 0, filter: 'sepia(0.2)' }, // White/Cream
-  { name: 'Steam Basmati', sub: 'Extra Long Grain | Aromatic', color: 210, filter: 'hue-rotate(180deg)' }, // Blue
-  { name: 'IRRI-9 Long Grain', sub: 'Long Grain | Everyday', color: 120, filter: 'hue-rotate(80deg) saturate(1.5)' }, // Green
-  { name: 'Sella Basmati', sub: 'Extra Long Grain | Sella', color: 0, filter: 'hue-rotate(-160deg) saturate(1.5)' }, // Reddish
-  { name: 'Kainat Basmati', sub: 'Extra Long Grain | Premium', color: 270, filter: 'hue-rotate(240deg)' }, // Purple
+  { name: 'Super Kernel Basmati', sub: 'Extra Long Grain | Premium Quality', image: sack0 },
+  { name: '1121 White Sella', sub: 'Extra Long Grain | Sella', image: sack1 },
+  { name: 'Steam Basmati', sub: 'Extra Long Grain | Aromatic', image: sack2 },
+  { name: 'IRRI-9 Long Grain', sub: 'Long Grain | Everyday', image: sack3 },
+  { name: 'Sella Basmati', sub: 'Extra Long Grain | Sella', image: sack4 },
+  { name: 'Kainat Basmati', sub: 'Extra Long Grain | Premium', image: sack5 },
 ]
 
 export default function RiceShowcase() {
@@ -38,9 +43,9 @@ export default function RiceShowcase() {
             >
               <div style={{ position: 'relative', overflow: 'hidden', marginBottom: '24px', borderRadius: '8px' }}>
                 <img 
-                  src={sackImage} 
+                  src={v.image} 
                   alt={v.name} 
-                  style={{ width: '100%', height: '300px', objectFit: 'cover', filter: v.filter, transform: 'scale(1.1)' }} 
+                  style={{ width: '100%', height: '300px', objectFit: 'contain', transform: 'scale(1.1)' }} 
                 />
               </div>
               <h3 style={{ fontFamily: 'var(--f-serif)', fontSize: '22px', color: 'var(--c-dark)', marginBottom: '8px', fontWeight: 600 }}>
