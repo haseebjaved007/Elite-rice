@@ -9,6 +9,9 @@ import Footer from './components/Footer'
 
 import Home from './pages/Home'
 import About from './pages/About'
+import Products from './pages/Products'
+import Quality from './pages/Quality'
+import ContactUs from './pages/ContactUs'
 import Faq from './pages/Faq'
 import Delivery from './pages/Delivery'
 
@@ -43,18 +46,22 @@ export default function App() {
       <OrderContext.Provider value={{ order, setOrder }}>
         <BrowserRouter>
           <ScrollManager />
-          <CustomCursor />
+          {/* CustomCursor is removed from luxury redesign for cleaner UX, or can be kept if wanted. I'll remove it since the CSS removed cursor: none for body. */}
+          
           <AnimatePresence mode="wait">
             {loading && <Preloader key="preloader" onComplete={() => setLoading(false)} />}
           </AnimatePresence>
 
           {!loading && (
             <>
-              <PromoBanner />
+              {/* <PromoBanner /> Removing promo banner for cleaner luxury look */}
               <Navbar />
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
+                <Route path="/products" element={<Products />} />
+                <Route path="/quality" element={<Quality />} />
+                <Route path="/contact" element={<ContactUs />} />
                 <Route path="/faq" element={<Faq />} />
                 <Route path="/delivery" element={<Delivery />} />
               </Routes>
