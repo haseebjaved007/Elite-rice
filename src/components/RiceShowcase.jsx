@@ -1,20 +1,15 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import sack0 from '../assets/sack_0.jpg'
-import sack1 from '../assets/sack_1.jpg'
-import sack2 from '../assets/sack_2.jpg'
-import sack3 from '../assets/sack_3.jpg'
-import sack4 from '../assets/sack_4.jpg'
-import sack5 from '../assets/sack_5.jpg'
+import sackImage from '../assets/product-elite-sack.jpg'
 
 const varieties = [
-  { name: 'Super Kernel Basmati', sub: 'Extra Long Grain | Premium Quality', image: sack0 },
-  { name: '1121 White Sella', sub: 'Extra Long Grain | Sella', image: sack1 },
-  { name: 'Steam Basmati', sub: 'Extra Long Grain | Aromatic', image: sack2 },
-  { name: 'IRRI-9 Long Grain', sub: 'Long Grain | Everyday', image: sack3 },
-  { name: 'Sella Basmati', sub: 'Extra Long Grain | Sella', image: sack4 },
-  { name: 'Kainat Basmati', sub: 'Extra Long Grain | Premium', image: sack5 },
+  { name: 'Super Kernel Basmati', sub: 'Extra Long Grain | Premium Quality', filter: 'hue-rotate(-40deg) saturate(1.5) brightness(0.95)' }, // Gold/Greenish
+  { name: '1121 White Sella', sub: 'Extra Long Grain | Sella', filter: 'sepia(0.3) brightness(1.05)' }, // White/Cream
+  { name: 'Steam Basmati', sub: 'Extra Long Grain | Aromatic', filter: 'hue-rotate(200deg) saturate(1.2)' }, // Blue
+  { name: 'IRRI-9 Long Grain', sub: 'Long Grain | Everyday', filter: 'hue-rotate(90deg) saturate(1.4) brightness(0.9)' }, // Green
+  { name: 'Sella Basmati', sub: 'Extra Long Grain | Sella', filter: 'hue-rotate(-150deg) saturate(1.8) brightness(0.9)' }, // Reddish
+  { name: 'Kainat Basmati', sub: 'Extra Long Grain | Premium', filter: 'hue-rotate(260deg) saturate(1.3) brightness(0.9)' }, // Purple
 ]
 
 export default function RiceShowcase() {
@@ -41,11 +36,11 @@ export default function RiceShowcase() {
               transition={{ delay: i * 0.1 }}
               style={{ backgroundColor: 'var(--c-light)', borderRadius: '12px', padding: '24px', textAlign: 'center', boxShadow: '0 12px 24px rgba(0,0,0,0.2)' }}
             >
-              <div style={{ position: 'relative', overflow: 'hidden', marginBottom: '24px', borderRadius: '8px' }}>
+              <div style={{ position: 'relative', overflow: 'hidden', marginBottom: '24px', borderRadius: '8px', mixBlendMode: 'multiply' }}>
                 <img 
-                  src={v.image} 
+                  src={sackImage} 
                   alt={v.name} 
-                  style={{ width: '100%', height: '300px', objectFit: 'contain', transform: 'scale(1.1)' }} 
+                  style={{ width: '100%', height: '300px', objectFit: 'contain', filter: v.filter }} 
                 />
               </div>
               <h3 style={{ fontFamily: 'var(--f-serif)', fontSize: '22px', color: 'var(--c-dark)', marginBottom: '8px', fontWeight: 600 }}>

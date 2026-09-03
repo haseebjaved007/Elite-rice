@@ -1,7 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import heroImage from '../assets/hero-sack-gold.jpg'
+import heroImage from '../assets/hero-elite-sack.jpg'
 
 export default function Hero() {
   return (

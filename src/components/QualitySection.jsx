@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import riceBowlImg from '../assets/cooked-rice-bowl.jpg'
+import riceBowlImg from '../assets/quality-elite-bowl.jpg'
 
 export default function QualitySection() {
   const features = [
